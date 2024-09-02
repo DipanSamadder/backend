@@ -79,6 +79,7 @@ router.delete("/delete-task/:id", authentication, async (req, res) => {
 router.put("/update-task/:id", authentication, async (req, res) => {
   try {
     const taskId = req.params.id;
+
     const { title, desc } = req.body;
     await Task.findByIdAndUpdate(taskId, { title: title, desc: desc });
     return res.status(200).json({ message: "Task update successfully" });
